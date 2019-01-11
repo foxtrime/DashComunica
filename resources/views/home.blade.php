@@ -7,6 +7,8 @@
 @stop
 
 @section('content')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
 {{-- GRAFICO IMPRENSA --}}
     <div class="row">
         <div class="col-md-12">
@@ -24,58 +26,51 @@
               <div class="row">
                 <div class="col-md-8">
                   <p class="text-center">
-                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                    <strong> 1 Jan, 2019 - 30 Dez, 2019</strong>
                   </p>
+                  <canvas id="imprensa" width="800" height="450"></canvas>
+                  
+                  <script type="text/javascript">
+                      
+                      let clipping = [];
+                      let noticias = [];
+                      let mes1 = [];
+                      
+                      @foreach($imprensa as $valor)
+                        clipping.push({!! json_encode($valor->clipping) !!});
+                        noticias.push({!! json_encode($valor->noticias) !!});
+                        mes1.push({!! json_encode($valor->mes) !!});
+                      @endforeach
 
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px; width: 475px;" width="475" height="180"></canvas>
-                  </div>
+
+
+                      new Chart(document.getElementById("imprensa"), {
+                      type: 'bar',
+                      data: {
+                        labels: mes1,
+                        datasets: [
+                          {
+                            label: "Clipping",
+                            backgroundColor: "#3e95cd",
+                            data: clipping
+                          },
+                          {
+                            label: "Noticias",
+                            backgroundColor: "#8e5ea2",
+                            data: noticias
+                          },
+                        ]
+                      },
+                  });
+                  </script>
+
+
+
+
                   <!-- /.chart-responsive -->
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
-                  <p class="text-center">
-                    <strong>Goal Completion</strong>
-                  </p>
-
-                  <div class="progress-group">
-                    <span class="progress-text">Add Products to Cart</span>
-                    <span class="progress-number"><b>160</b>/200</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Complete Purchase</span>
-                    <span class="progress-number"><b>310</b>/400</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Visit Premium Page</span>
-                    <span class="progress-number"><b>480</b>/800</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Send Inquiries</span>
-                    <span class="progress-number"><b>250</b>/500</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                </div>
                 <!-- /.col -->
               </div>
               <!-- /.row -->
@@ -86,248 +81,133 @@
         </div>
         <!-- /.col -->
       </div>
+    </div> 
+      {{-- FIM GRAFICO IMPRENSA --}}
+
+{{-- GRAFICO IMPRENSA --}}
+<div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Grafico Solicitação Design</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-8">
+              <p class="text-center">
+                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+              </p>
+
+
+
+
+
+
+              <!-- /.chart-responsive -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4">
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- ./box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+</div>
 {{-- FIM GRAFICO IMPRENSA --}}
 
-{{-- GRAFICO SOLICITAÇÃO DESIGN --}}
+{{-- GRAFICO IMPRENSA --}}
 <div class="row">
-        <div class="col-md-12">
-          <div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Grafico Solicitação Design</h3>
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Grafico Facebook Jorge</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <p class="text-center">
-                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                  </p>
-
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px; width: 475px;" width="475" height="180"></canvas>
-                  </div>
-                  <!-- /.chart-responsive -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                  <p class="text-center">
-                    <strong>Goal Completion</strong>
-                  </p>
-
-                  <div class="progress-group">
-                    <span class="progress-text">Add Products to Cart</span>
-                    <span class="progress-number"><b>160</b>/200</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Complete Purchase</span>
-                    <span class="progress-number"><b>310</b>/400</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Visit Premium Page</span>
-                    <span class="progress-number"><b>480</b>/800</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Send Inquiries</span>
-                    <span class="progress-number"><b>250</b>/500</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- ./box-body -->
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
           </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
-      </div>
-{{-- FIM GRAFICO SOLICITAÇÃO DESIGN --}}
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-8">
+              <p class="text-center">
+                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+              </p>
 
-{{-- FACE JORGE --}}
+
+
+
+
+
+              <!-- /.chart-responsive -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4">
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- ./box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+</div>
+{{-- FIM GRAFICO IMPRENSA --}}
+
+{{-- GRAFICO IMPRENSA --}}
 <div class="row">
-        <div class="col-md-12">
-          <div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Grafico Prefeito Jorge</h3>
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Grafico Facebook Prefeitura</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <p class="text-center">
-                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                  </p>
-
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px; width: 475px;" width="475" height="180"></canvas>
-                  </div>
-                  <!-- /.chart-responsive -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                  <p class="text-center">
-                    <strong>Goal Completion</strong>
-                  </p>
-
-                  <div class="progress-group">
-                    <span class="progress-text">Add Products to Cart</span>
-                    <span class="progress-number"><b>160</b>/200</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Complete Purchase</span>
-                    <span class="progress-number"><b>310</b>/400</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Visit Premium Page</span>
-                    <span class="progress-number"><b>480</b>/800</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Send Inquiries</span>
-                    <span class="progress-number"><b>250</b>/500</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- ./box-body -->
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
           </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
-      </div>
-{{-- FIM FACE JORGE --}}
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-8">
+              <p class="text-center">
+                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+              </p>
 
-{{-- FACE PREFEITURA --}}
-<div class="row">
-        <div class="col-md-12">
-          <div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Grafico Facebook Prefeitura</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
+
+
+
+
+              <!-- /.chart-responsive -->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <p class="text-center">
-                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                  </p>
-
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px; width: 475px;" width="475" height="180"></canvas>
-                  </div>
-                  <!-- /.chart-responsive -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                  <p class="text-center">
-                    <strong>Goal Completion</strong>
-                  </p>
-
-                  <div class="progress-group">
-                    <span class="progress-text">Add Products to Cart</span>
-                    <span class="progress-number"><b>160</b>/200</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Complete Purchase</span>
-                    <span class="progress-number"><b>310</b>/400</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Visit Premium Page</span>
-                    <span class="progress-number"><b>480</b>/800</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Send Inquiries</span>
-                    <span class="progress-number"><b>250</b>/500</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- ./box-body -->
+            <!-- /.col -->
+            <div class="col-md-4">
+            <!-- /.col -->
           </div>
-          <!-- /.box -->
+          <!-- /.row -->
         </div>
-        <!-- /.col -->
+        <!-- ./box-body -->
       </div>
-{{-- FIM FACE PREFEITURA --}}
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+</div>
+{{-- FIM GRAFICO IMPRENSA --}}
+
 @stop

@@ -23,7 +23,7 @@ class CreateJorgefacesTable extends Migration
             $table->integer('reacoes');
             $table->integer('comentarios');
             $table->integer('compartilhamentos');
-            $table->date('data');
+            $table->enum('mes',['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']);
             $table->timestamps();
         });
     }

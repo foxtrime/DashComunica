@@ -7,5 +7,7 @@
 @stop
 
 @section('content')
-    <p>bla!</p>
+
+
 @stop
+

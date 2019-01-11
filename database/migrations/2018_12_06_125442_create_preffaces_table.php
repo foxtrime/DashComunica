@@ -21,7 +21,7 @@ class CreatePreffacesTable extends Migration
             $table->integer('interacoes');
             $table->integer('publicacoes');
             $table->integer('seg_insta');
-            $table->date('data');
+            $table->enum('mes',['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']);
             $table->timestamps();
         });
     }

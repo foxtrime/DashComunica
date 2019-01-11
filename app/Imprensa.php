@@ -11,7 +11,7 @@ class Imprensa extends Model
     protected $fillable = [
         		'clipping',
             'noticias',
-            'data',
+            'mes',
     ];
 
  }

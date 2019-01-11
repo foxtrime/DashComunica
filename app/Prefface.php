@@ -15,6 +15,6 @@ class Prefface extends Model
             'interacoes',
             'publicacoes',
             'seg_insta',
-            'data',
+            'mes',
       ];
  }

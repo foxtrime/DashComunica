@@ -17,7 +17,7 @@ class Jorgeface extends Model
             'reacoes',
             'comentarios',
             'compartilhamentos',
-            'data',
+            'mes',
     ];
 
  }

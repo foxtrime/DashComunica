@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Imprensa;
+use App\Jorgeface;
+use App\Prefface;
+use App\Solicitadesign;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $imprensa = Imprensa::all();
+        $facejorge = Jorgeface::all();
+        $facepref = Prefface::all();
+        $solicitades = Solicitadesign::all();
+
+        return view('home',compact('imprensa','facejorge','facepref','solicitades'));
     }
 }

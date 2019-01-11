@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Imprensa;
 
 class ImprensaController extends Controller
 {
@@ -13,7 +15,9 @@ class ImprensaController extends Controller
      */
     public function index()
     {
-        return view('imprensa/index');
+        $imprensa = Imprensa::all();
+        //dd($imprensa);
+        return view('imprensa/index',compact('imprensa'));
     }
 
     /**
@@ -23,7 +27,7 @@ class ImprensaController extends Controller
      */
     public function create()
     {
-        //
+        return view('imprensa/create');
     }
 
     /**
@@ -34,7 +38,20 @@ class ImprensaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $imprensa = new Imprensa($request->all());
+
+        $batata = DB::table('imprensas')->where('mes',$imprensa->mes)->first();
+
+        if(!$batata){
+            
+            $imprensa->save();
+            return redirect(url('/imprensa'))->with('success','Informação cadastrada com sucesso!');
+        }
+         if($batata){
+            return redirect(url('/imprensa'))->with('error','Erro, Mes ja existente, tente alterar-lo!');
+        }
+
+       
     }
 
     /**
@@ -56,7 +73,8 @@ class ImprensaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $imprensa = Imprensa::find($id);
+        return view('imprensa/edit',compact('imprensa'));
     }
 
     /**
@@ -68,7 +86,10 @@ class ImprensaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $imprensa = Imprensa::find($id);
+        $imprensa->fill($request->all());
+        $imprensa->save();
+        return redirect(url('/imprensa')); 
     }
 
     /**

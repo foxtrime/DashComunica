@@ -10,7 +10,7 @@ class Solicitadesign extends Model
 
      protected $fillable = [
         'solicitacoes',
-        'data',
+        'mes',
     ];
 
 }

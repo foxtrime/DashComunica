@@ -17,7 +17,7 @@ class CreateImprensasTable extends Migration
             $table->increments('id');
             $table->integer('clipping');
             $table->integer('noticias');
-            $table->date('data');
+            $table->enum('mes',['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']);
             $table->timestamps();
         });
     }

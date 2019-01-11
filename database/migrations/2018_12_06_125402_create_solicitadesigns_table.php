@@ -16,7 +16,7 @@ class CreateSolicitadesignsTable extends Migration
         Schema::create('solicitadesigns', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('solicitacoes');
-            $table->date('data');
+            $table->enum('mes',['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']);
             $table->timestamps();
         });
     }
