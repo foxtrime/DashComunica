@@ -23,7 +23,7 @@
 @endif
 
 <div class="box box-info">
-    <div class="box-header ui-sortable-handle" style="cursor: move;padding-bottom: 20px;
+    <div class="box-header ui-sortable-handle" style="padding-bottom: 20px;
     ">
         <!-- tools box -->
         <div class="pull-right box-tools">

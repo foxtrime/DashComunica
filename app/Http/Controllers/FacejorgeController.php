@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Jorgeface;
 
@@ -14,7 +15,8 @@ class FacejorgeController extends Controller
      */
     public function index()
     {
-        return view('facejorge/index');
+        $facejorge = Jorgeface::all();
+        return view('facejorge/index',compact('facejorge'));
     }
 
     /**
@@ -24,7 +26,7 @@ class FacejorgeController extends Controller
      */
     public function create()
     {
-        //
+        return view('facejorge/create');
     }
 
     /**
@@ -35,7 +37,18 @@ class FacejorgeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $facejorge = new Jorgeface($request->all());
+
+        $batata = DB::table('jorgefaces')->where('mes',$facejorge->mes)->first();
+
+        if(!$batata){
+            
+            $facejorge->save();
+            return redirect(url('/facejorge'))->with('success','Informação cadastrada com sucesso!');
+        }
+         if($batata){
+            return redirect(url('/facejorge'))->with('error','Erro, Mes ja existente, tente alterar-lo!');
+        }
     }
 
     /**
@@ -57,7 +70,8 @@ class FacejorgeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $facejorge = Jorgeface::find($id);
+        return view('facejorge/edit',compact('facejorge'));
     }
 
     /**
@@ -69,7 +83,10 @@ class FacejorgeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $facejorge = Jorgeface::find($id);
+        $facejorge->fill($request->all());
+        $facejorge->save();
+        return redirect(url('/facejorge')); 
     }
 
     /**

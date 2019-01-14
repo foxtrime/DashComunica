@@ -31,7 +31,7 @@ class HomeController extends Controller
         $facejorge = Jorgeface::all();
         $facepref = Prefface::all();
         $solicitades = Solicitadesign::all();
-
+        //dd($facejorge);
         return view('home',compact('imprensa','facejorge','facepref','solicitades'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Prefface;
 
@@ -14,7 +15,8 @@ class FaceprefController extends Controller
      */
     public function index()
     {
-        return view('facepref/index');
+        $facepref = Prefface::all();
+        return view('facepref/index',compact('facepref'));
     }
 
     /**
@@ -24,7 +26,7 @@ class FaceprefController extends Controller
      */
     public function create()
     {
-        //
+        return view('facepref/create');
     }
 
     /**
@@ -35,7 +37,18 @@ class FaceprefController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $facepref = new Prefface($request->all());
+
+        $batata = DB::table('preffaces')->where('mes',$facepref->mes)->first();
+
+        if(!$batata){
+            
+            $facepref->save();
+            return redirect(url('/facepref'))->with('success','Informação cadastrada com sucesso!');
+        }
+         if($batata){
+            return redirect(url('/facepref'))->with('error','Erro, Mes ja existente, tente alterar-lo!');
+        }
     }
 
     /**
@@ -57,7 +70,8 @@ class FaceprefController extends Controller
      */
     public function edit($id)
     {
-        //
+        $facepref = Prefface::find($id);
+        return view('facepref/edit',compact('facepref'));
     }
 
     /**
@@ -69,7 +83,10 @@ class FaceprefController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $facepref = Prefface::find($id);
+        $facepref->fill($request->all());
+        $facepref->save();
+        return redirect(url('/facepref')); 
     }
 
     /**
