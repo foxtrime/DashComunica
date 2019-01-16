@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\User;
 use App\Imprensa;
 use App\Jorgeface;
 use App\Prefface;
@@ -27,11 +29,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $imprensa = Imprensa::all();
-        $facejorge = Jorgeface::all();
-        $facepref = Prefface::all();
-        $solicitades = Solicitadesign::all();
-        //dd($facejorge);
-        return view('home',compact('imprensa','facejorge','facepref','solicitades'));
+        $user = auth()->user()->perfil;
+        
+        if($user == 'admin'){
+            $imprensa = Imprensa::all();
+            $facejorge = Jorgeface::all();
+            $facepref = Prefface::all();
+            $solicitades = Solicitadesign::all();
+            //dd($facejorge);
+            return view('home',compact('imprensa','facejorge','facepref','solicitades'));
+        }else{
+            $imprensa = Imprensa::all();
+            $facejorge = Jorgeface::all();
+            $facepref = Prefface::all();
+            $solicitades = Solicitadesign::all();
+            //dd($facejorge);
+            return view('user',compact('imprensa','facejorge','facepref','solicitades'));
+        }
     }
 }

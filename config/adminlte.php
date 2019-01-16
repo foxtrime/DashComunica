@@ -32,7 +32,7 @@ return [
 
     'logo' => '<b>DashBoard</b>',
 
-    'logo_mini' => '<b>Mq</b>',
+    'logo_mini' => '<b>DB</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -134,15 +134,15 @@ return [
             'url'         => 'facepref',
             'icon'        => 'file',
         ],
-        'ACCOUNT SETTINGS',
+        'CONFIGURAÇÃO DE CONTA',
+        // [
+        //     'text' => 'Perfil',
+        //     'url'  => '',
+        //     'icon' => 'user',
+        // ],
         [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
+            'text' => 'Criar Usuario',
+            'url'  => 'register',
             'icon' => 'lock',
         ],
         

@@ -1,24 +1,32 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// Route::get('/', function () {
+//     return view('auth/login');
+// });
 
-Route::get('/', function () {
-    return view('auth/login');
+// Auth::routes();
+
+Route::get('/', 'AuthController@index')->name('login');
+Route::post('/login', 'AuthController@login');
+
+Route::group(['middleware'=>['auth']],function(){
+
+/*==================================LOGOUT=================================*/
+    Route::get('/logout',function(){
+        Auth::logout();
+        return redirect()->route('login');
+    });
+/*============================================================================*/
+
+/*================================TELA INICIAL================================*/
+    Route::get('/home', 'HomeController@index')->name('home');
+/*============================================================================*/
+
+/*==================================REGISTRAR=================================*/
+    Route::get('/register', 'AuthController@create');
+    Route::post('register', 'AuthController@store');
+/*============================================================================*/
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::resource('imprensa', 'ImprensaController');
 Route::resource('solicitadesign', 'SolicitadesignController');
