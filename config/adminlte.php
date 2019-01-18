@@ -112,27 +112,27 @@ return [
         [
             'text'        => 'Inicio',
             'url'         => 'home',
-            'icon'        => 'file',
+            'icon'        => 'dashboard',
         ],
         [
             'text'        => 'Imprensa',
             'url'         => 'imprensa',
-            'icon'        => 'file',
+            'icon'        => 'list',
         ],
         [
             'text'        => 'Solicitações Design',
             'url'         => 'solicitadesign',
-            'icon'        => 'file',
+            'icon'        => 'list',
         ],
         [
             'text'        => 'Face Jorge',
             'url'         => 'facejorge',
-            'icon'        => 'file',
+            'icon'        => 'list',
         ],
         [
             'text'        => 'Face Prefeitura',
             'url'         => 'facepref',
-            'icon'        => 'file',
+            'icon'        => 'list',
         ],
         'CONFIGURAÇÃO DE CONTA',
         // [

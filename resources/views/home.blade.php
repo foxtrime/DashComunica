@@ -61,7 +61,16 @@
                           },
                         ]
                       },
-                  });
+                      options: {
+                        scales: {
+                          yAxes: [{
+                            ticks: {
+                              beginAtZero:true
+                            }
+                          }]
+                        }
+                      }
+                    });
                   </script>
 
 
@@ -129,6 +138,15 @@
                       },
                     ]
                   },
+                  options: {
+                        scales: {
+                          yAxes: [{
+                            ticks: {
+                              beginAtZero:true
+                            }
+                          }]
+                        }
+                      }
               });
               </script>
               <!-- /.chart-responsive -->
@@ -243,6 +261,15 @@
                       },
                     ]
                   },
+                  options: {
+                        scales: {
+                          yAxes: [{
+                            ticks: {
+                              beginAtZero:true
+                            }
+                          }]
+                        }
+                      }
               });
               </script>
               <!-- /.chart-responsive -->
@@ -340,6 +367,15 @@
                       },
                     ]
                   },
+                  options: {
+                        scales: {
+                          yAxes: [{
+                            ticks: {
+                              beginAtZero:true
+                            }
+                          }]
+                        }
+                      }
               });
               </script>
               <!-- /.chart-responsive -->
